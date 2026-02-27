@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "generated_by": "member3_movement.py",
+    "generated_at": "2026-02-28T01:33:02.434509",
+    "description": "GeoTrace movement intelligence report",
+    "version": "1.0"
+  },
+  "summary": {
+    "total_points": 5,
+    "total_segments": 4,
+    "total_clusters": 0,
+    "total_distance_km": 4933.9,
+    "total_distance_display": "4933.90 km",
+    "avg_speed_kmh": null,
+    "max_speed_kmh": null,
+    "min_speed_kmh": null,
+    "time_span_seconds": null,
+    "time_span_human": "N/A",
+    "first_timestamp": null,
+    "last_timestamp": null,
+    "behaviour_breakdown": {
+      "unknown": 4
+    }
+  },
+  "movement_segments": [
+    {
+      "from_point": {
+        "lat": 17.383309,
+        "lon": 78.4010528,
+        "timestamp": "unknown",
+        "filename": "download (2).jpg",
+        "cluster_id": -1
+      },
+      "to_point": {
+        "lat": 30.127896399999994,
+        "lon": 78.3298263,
+        "timestamp": "unknown",
+        "filename": "download (4).jpg",
+        "cluster_id": -1
+      },
+      "distance_km": 1417.1519,
+      "time_delta_seconds": null,
+      "time_delta_human": "N/A",
+      "speed_kmh": null,
+      "behaviour": "unknown"
+    },
+    {
+      "from_point": {
+        "lat": 30.127896399999994,
+        "lon": 78.3298263,
+        "timestamp": "unknown",
+        "filename": "download (4).jpg",
+        "cluster_id": -1
+      },
+      "to_point": {
+        "lat": 18.9219841,
+        "lon": 72.8346543,
+        "timestamp": "unknown",
+        "filename": "images (3).jpg",
+        "cluster_id": -1
+      },
+      "distance_km": 1363.8207,
+      "time_delta_seconds": null,
+      "time_delta_human": "N/A",
+      "speed_kmh": null,
+      "behaviour": "unknown"
+    },
+    {
+      "from_point": {
+        "lat": 18.9219841,
+        "lon": 72.8346543,
+        "timestamp": "unknown",
+        "filename": "images (3).jpg",
+        "cluster_id": -1
+      },
+      "to_point": {
+        "lat": 27.175144799999998,
+        "lon": 78.04214219999999,
+        "timestamp": "unknown",
+        "filename": "taj.jpg",
+        "cluster_id": -1
+      },
+      "distance_km": 1060.803,
+      "time_delta_seconds": null,
+      "time_delta_human": "N/A",
+      "speed_kmh": null,
+      "behaviour": "unknown"
+    },
+    {
+      "from_point": {
+        "lat": 27.175144799999998,
+        "lon": 78.04214219999999,
+        "timestamp": "unknown",
+        "filename": "taj.jpg",
+        "cluster_id": -1
+      },
+      "to_point": {
+        "lat": 17.361563600000004,
+        "lon": 78.4746645,
+        "timestamp": "unknown",
+        "filename": "WhatsApp Image 2026-02-27 at 11.40.27 PM.jpeg",
+        "cluster_id": -1
+      },
+      "distance_km": 1092.1244,
+      "time_delta_seconds": null,
+      "time_delta_human": "N/A",
+      "speed_kmh": null,
+      "behaviour": "unknown"
+    }
+  ],
+  "cluster_distances": [],
+  "dwell_times": {},
+  "time_of_day_profile": {
+    "morning": {
+      "count": 0,
+      "percentage": 0
+    },
+    "afternoon": {
+      "count": 0,
+      "percentage": 0
+    },
+    "evening": {
+      "count": 0,
+      "percentage": 0
+    },
+    "night": {
+      "count": 0,
+      "percentage": 0
+    }
+  },
+  "movement_corridors": []
+}

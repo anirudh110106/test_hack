@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "eternal-coral-329717",
+    "private_key_id": "69a81ac8ab6fedb446ce1fedf349146bdca95350",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDQ7mFksmYpswkw\nj6/E3iaNE1gH/FWics+92U/KZEEnfCzwfzXRINMN5xvunIK1kKO4LZ0hOMdRx32p\nDTjDj0zu06GCiU53UG/s5pOLy3j9FOGyWO+KF4TD4fbruoZTwjYNjuEN4jDwCkoS\nIOUdZsw9oMeMaMYzEnlpHywO75suPRiROHQZRlLEU4bAjD3aYTnfH1mg6GYAjGQy\nunnHNmhZXIRmWQOQKhtintERzyU+OZk3aALCPcLtriVUWGvWsetooROyTg3SRgtW\nhnEVEx4JNjLyscpqr15xPpXqoc/w16d1YJ3DUhqzjjQx0UpXrisgigaG/EcI/P3D\n8C9LmYjpAgMBAAECggEAAU7QtMLqIU4x20g2+zZBywXJOgmSFql90+wpk/SDNOZR\n2LKPKW85av+cnOaFafINGFDOyD+0/bXQO0/uIElEG8We3/SQlW4fOT4rQ8eDCyCH\nlih43WYuylQeidS51Qnk8TpI/d+B22rREmJ61K+JTUR1o1MflH/D20za54AH+mbc\nG9i4ZP9dlASltg2J3k9pNAr6M3NX1/WqdGMz/K7Re2H4HWTdDUgFLdxL6S8VsH6j\na60/o9O0u995ReI9cnJKbwdoFYagvN0mGygccvj/aRe2FtEn1g8iX3Znm1Hxuc8T\n35H+IdMCHro64mS0yD3aaGMZuLl3zMG717NC51+PQQKBgQDxU1eUGgA17pM9ij9F\ndVJXrNwoniHxIKPGVDpVvO5IrAFVECSgdjWfMvgL7YYU9C7eCKFqv+Dcp51apJ+h\nF7F3uPb35SCWN2J0GAo+PxSmmRiEalpEMM2DUXrbSyxHf/48Atmc/EuBpuH1yhGE\n7g8YLO3PI7Ewq18222odn/aySQKBgQDdosM9dnQWCx6GPXoap1dConi0QP4fMkWl\nyr7umjzJ6AsoPvlLxEPCTj48Lw1kywHkU6SLK3zXj2nHL/KeUzYxB5fxGVSdhM60\nibLjsL4cRrMEyMYwwj8wFcNfsG579WsDJTvW7VCT6Qq2I10RaxjRl7g6nfzqO5Y6\nFEuowLghoQKBgQC0/69WE1JJIREqPQBLlj0WKT5O8JvAgJyVaiL+n1+Q/gFZzWvL\nNh3ts4q7V4ETQjnMqmh26kc6+DRbAdIAPwcKJp6FO0L/p7aeIFG+cg2JDpaG6kWd\nk4TwkzI0O+OQFP2YAQM6bTgsnAAqG06chvinRztt+vUw7bfSKysh4RJkkQKBgQCD\n3x4v6dT0cLU+xkFqrnq7CRSsm6cYRL8wAExOh7L3p3tL/Pwz2pk+eXOKN6zOdgOw\nKRxUOhHT6F7Vx2+iSHyL+6qqJ5ozBxw+S1gHJdhX1rEZfaR+ynTyVWCkBMQYOVPs\n0TCjlxxEhXp8GNp9TK29t3pEVlBvxfiCoiTKSbDFQQKBgCaLT6rRobDmWMst0cEw\na9o2MSNq12Ivvwrkhx9CSDWjvO8XB05VxMbAxZqzsjkgPPtCobCITibnSfnXe7re\nkMHbty2/eMDzPCeOS6iyNchGWw/uu5IYi7I6JsA//y5nP35chFhEcCkMcC6AtHY4\nL7aN6MWDas7gL4IHIr1Z9TDC\n-----END PRIVATE KEY-----\n",
+    "client_email": "vision-waves@eternal-coral-329717.iam.gserviceaccount.com",
+    "client_id": "102721079466841510890",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vision-waves%40eternal-coral-329717.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+}

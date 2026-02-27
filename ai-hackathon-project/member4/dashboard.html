@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GeoTrace - Movement Intelligence</title>
+    <meta charset="utf-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: #111;
+            padding: 14px 24px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header h1 { font-size: 20px; color: #00ffcc; }
+        .header span { font-size: 12px; color: #666; }
+        .stats-bar {
+            display: flex;
+            gap: 10px;
+            padding: 12px 24px;
+            background: #111;
+            border-bottom: 1px solid #222;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 10px 18px;
+            min-width: 140px;
+        }
+        .stat-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00ffcc;
+            margin-top: 2px;
+        }
+        .stat-value.danger { color: #ff4444; }
+        .main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 260px;
+            background: #111;
+            border-right: 1px solid #222;
+            padding: 16px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        .sidebar h3 {
+            font-size: 11px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            margin-top: 16px;
+        }
+        .sidebar h3:first-child { margin-top: 0; }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 0;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 13px;
+        }
+        .info-row span { color: #888; }
+        .info-row b {
+            color: #fff;
+            text-align: right;
+            max-width: 140px;
+            font-weight: 500;
+        }
+        .risk-box {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+        }
+        .risk-title {
+            font-size: 11px;
+            color: #ff8800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .risk-bar-bg {
+            background: #333;
+            border-radius: 4px;
+            height: 8px;
+            overflow: hidden;
+        }
+        .risk-bar-fill {
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, #ff8800, #ff4444);
+            border-radius: 4px;
+        }
+        .risk-score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff8800;
+            margin-top: 6px;
+        }
+        .risk-sub {
+            font-size: 11px;
+            color: #555;
+            margin-top: 2px;
+        }
+        .map-container { flex: 1; }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .footer {
+            background: #111;
+            border-top: 1px solid #222;
+            padding: 8px 24px;
+            display: flex;
+            gap: 32px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>GeoTrace</h1>
+        <span>Movement Intelligence Dashboard &nbsp;|&nbsp;
+              N/A</span>
+        <span id="live-clock" style="
+            margin-left: auto;
+            font-size: 13px;
+            color: #00ffcc;
+            font-family: monospace;
+            letter-spacing: 1px;
+        "></span>
+        <script>
+            function updateClock() {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('en-IN', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+                const dateStr = now.toLocaleDateString('en-IN', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
+                document.getElementById('live-clock').textContent
+                    = dateStr + '  ' + timeStr;
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+        </script>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-label">Locations</div>
+            <div class="stat-value">5</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Total Distance</div>
+            <div class="stat-value">4933.9 km</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Avg Daily</div>
+            <div class="stat-value">0.0 km</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Most Visited</div>
+            <div class="stat-value" style="font-size:13px; margin-top:4px;">
+                N/A
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Anomalies</div>
+            <div class="stat-value danger">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Images Analyzed</div>
+            <div class="stat-value">5</div>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <div class="sidebar">
+            <h3>Behavioral Intel</h3>
+            <div class="info-row">
+                <span>Home</span>
+                <b>N/A</b>
+            </div>
+            <div class="info-row">
+                <span>Work</span>
+                <b>N/A</b>
+            </div>
+            <div class="info-row">
+                <span>Peak Hour</span>
+                <b>N/A</b>
+            </div>
+            <div class="info-row">
+                <span>Most Active</span>
+                <b>N/A</b>
+            </div>
+            <div class="info-row">
+                <span>Night Moves</span>
+                <b>0.0%</b>
+            </div>
+
+            <h3>Privacy Risk</h3>
+            <div class="risk-box">
+                <div class="risk-title">Exposure Score</div>
+                <div class="risk-bar-bg">
+                    <div class="risk-bar-fill"></div>
+                </div>
+                <div class="risk-score">4 / 10</div>
+                <div class="risk-sub">
+                    Medium — Some routine patterns visible
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="map.html"></iframe>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <span>
+            GREEN = High Confidence &nbsp;|&nbsp;
+            ORANGE = Medium Confidence &nbsp;|&nbsp;
+            RED = Low / Unclustered
+        </span>
+        <span style="margin-left:auto; display:flex; align-items:center; gap:12px;">
+            <button onclick="exportCSV()" style="
+                background: #00ffcc;
+                color: #000;
+                border: none;
+                padding: 6px 16px;
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: bold;
+                cursor: pointer;
+            ">Export CSV</button>
+            Built with GeoTrace — Member 4
+        </span>
+        <script>
+        function exportCSV() {
+            const data = [{"image_id": "download (2).jpg", "lat": 17.383309, "lon": 78.4010528, "timestamp": null, "cluster_id": -1, "confidence": "LOW"}, {"image_id": "download (4).jpg", "lat": 30.127896399999994, "lon": 78.3298263, "timestamp": null, "cluster_id": -1, "confidence": "LOW"}, {"image_id": "images (3).jpg", "lat": 18.9219841, "lon": 72.8346543, "timestamp": null, "cluster_id": -1, "confidence": "LOW"}, {"image_id": "taj.jpg", "lat": 27.175144799999998, "lon": 78.04214219999999, "timestamp": null, "cluster_id": -1, "confidence": "LOW"}, {"image_id": "WhatsApp Image 2026-02-27 at 11.40.27 PM.jpeg", "lat": 17.361563600000004, "lon": 78.4746645, "timestamp": null, "cluster_id": -1, "confidence": "LOW"}];
+            const headers = ['image_id','lat','lon','timestamp','cluster_id','confidence'];
+            const rows = data.map(p =>
+                headers.map(h => (p[h] !== undefined ? p[h] : '')).join(',')
+            );
+            const csv = [headers.join(','), ...rows].join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url  = URL.createObjectURL(blob);
+            const a    = document.createElement('a');
+            a.href     = url;
+            a.download = 'geotrace_export.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        </script>
+    </div>
+
+</body>
+</html>
