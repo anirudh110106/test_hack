@@ -1,38 +1,51 @@
-from google.cloud import vision
-from google.oauth2 import service_account
-import os
+import requests
+import base64
 
-BASE_DIR = os.path.dirname(__file__)
-KEY_PATH = os.path.join(BASE_DIR, "vision-key.json")
+API_KEY = "AIzaSyCvZmoPW6wb1x0O-ZrhLOOMLMLsLJswUCU"
 
-def get_vision_client():
-    credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
-    return vision.ImageAnnotatorClient(credentials=credentials)
+VISION_URL = f"https://vision.googleapis.com/v1/images:annotate?key={API_KEY}"
+
 
 def get_location_from_image(image_path):
-    print(f"\n[VISION API] Accessing Google Vision for: {image_path}")
     try:
-        client = get_vision_client()
+        print(f"\n[VISION API] Accessing Google Vision for: {image_path}")
 
-        with open(image_path, "rb") as image_file:
-            content = image_file.read()
+        with open(image_path, "rb") as f:
+            image_content = base64.b64encode(f.read()).decode()
 
-        image = vision.Image(content=content)
-        response = client.landmark_detection(image=image)
+        body = {
+            "requests": [
+                {
+                    "image": {"content": image_content},
+                    "features": [{"type": "LANDMARK_DETECTION"}],
+                }
+            ]
+        }
 
-        if response.landmark_annotations:
-            landmark = response.landmark_annotations[0]
-            print(f"[VISION API] Success! Found landmark: {landmark.description}")
-            if landmark.locations:
-                lat = landmark.locations[0].lat_lng.latitude
-                lon = landmark.locations[0].lat_lng.longitude
-                return lat, lon
-        else:
-            print("[VISION API] Google Vision searched but did not recognize any famous landmarks in this photo.")
+        response = requests.post(VISION_URL, json=body, timeout=15)
+
+        if response.status_code != 200:
+            print("[VISION API] Error:", response.status_code, response.text)
+            return None
+
+        result = response.json()
+        landmark_annotations = result["responses"][0].get("landmarkAnnotations")
+
+        if not landmark_annotations:
+            print("[VISION API] No landmark detected.")
+            return None
+
+        landmark = landmark_annotations[0]
+        location = landmark["locations"][0]["latLng"]
+
+        lat = location["latitude"]
+        lon = location["longitude"]
+
+        print("[VISION API] Landmark detected:", landmark["description"])
+        print("[VISION API] Coordinates:", lat, lon)
+
+        return lat, lon
 
     except Exception as e:
-        print(f"\n[VISION API CRITICAL ERROR] Google rejected your API key!")
-        print(f"Details: {e}")
-        print("Note: Google automatically blocks API keys if they are pasted into AI chats to prevent abuse.")
-
-    return None
+        print("[VISION API] Critical Error:", str(e))
+        return None
